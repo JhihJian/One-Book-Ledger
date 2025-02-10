@@ -19,7 +19,7 @@ def parse_alipay_csv(input_f):
         ('收/付款方式', '收/付款账户', None),
         ('交易状态', '交易状态', None)
     ]
-    extra_columns = {'交易渠道': '支付宝'}
+    extra_columns = {'统计账单': '支付宝'}
     return parse(input_f, column_mapping, extra_columns, encoding, skip_lines)
 
 

@@ -40,7 +40,7 @@ def parse_wechat_csv(input_f):
         ('支付方式', '收/付款账户', None),
         ('当前状态', '交易状态', None)
     ]
-    extra_columns = {'交易渠道': '微信'}
+    extra_columns = {'统计账单': '微信'}
     df = parse(input_f, column_mapping, extra_columns, encoding, skip_lines)
 
     # 特殊处理 1. 将 {'收/付款账户'：'/','交易状态':'已存入零钱'} 处理为 {'收/付款账户'：'零钱','交易状态':'交易成功'}

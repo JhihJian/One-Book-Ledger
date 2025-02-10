@@ -35,14 +35,14 @@ def extract_description(trade_summary):
     else:
         return trade_summary
 
-def parse_pufa_excel(input_f):
-    """解析浦发银行信用卡账单excel文件。
+def parse_zhongxin_csv(input_f):
+    """解析中信银行信用卡账单excel文件。
 
     Args:
         input_f (str): 输入CSV文件路径。
     """
     encoding = 'gbk'
-    skip_lines = 0
+    skip_lines = 1
     column_mapping = [
         ('交易日期', '交易时间', convert_date_format),
         ('交易摘要', '收/付款账户', extract_account),  # 使用映射函数
@@ -51,7 +51,7 @@ def parse_pufa_excel(input_f):
         ('交易金额', '交易金额', remove_sign),
         ('交易金额', '收/支', get_income_or_expense)
     ]
-    extra_columns = {'交易分类': '','交易状态': '','统计账单': '浦发银行'}
+    extra_columns = {'交易分类': '','交易状态': '','统计账单': '中信银行'}
 
     return parse(input_f, column_mapping, extra_columns, encoding, skip_lines)
 
